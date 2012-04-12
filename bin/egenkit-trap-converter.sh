@@ -1,6 +1,6 @@
 #!/bin/bash
 # ./egenkit-trap-converter.sh
-# v1.2
+# v1.2.x
 # Arif Kusbandono
 #
 # requires:
@@ -13,6 +13,8 @@
 #
 # will convert trap from eGen kit to OID continue list of values
 # generated as `egenkit-dynamic.lst`
+#
+# this `x` version is a workaround to `Battery` trap string issue
 
 unset checkStatus
 if [ "$1" == "check" ]; then
@@ -31,8 +33,15 @@ read hostname
 HOST=$hostname
 
 insert_val() {
-	# call the OID index generator perl script 
-	index=`$OID_INDEX_GENERATOR "${1}"`
+	# workaround for `Battery` string issue===
+	battFound=`echo $1 | grep Battery | wc -l`
+	if [ $battFound -gt 0 ]; then
+		index=18
+	else
+		# call the OID index generator perl script 
+		index=`$OID_INDEX_GENERATOR "${1}"`
+	fi
+	
 	# find & replace value of relevant OID
 	if [ $index -gt 0 ]; then
 	{
