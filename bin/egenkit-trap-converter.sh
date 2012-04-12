@@ -1,6 +1,6 @@
 #!/bin/bash
 # ./egenkit-trap-converter.sh
-# v1.0
+# v1.2
 # Arif Kusbandono
 #
 # requires:
@@ -34,7 +34,12 @@ insert_val() {
 	# call the OID index generator perl script 
 	index=`$OID_INDEX_GENERATOR "${1}"`
 	# find & replace value of relevant OID
-	perl -pi -e "s/.1.3.6.1.4.1.38337.1.1.3.7.4.${index}.0=\w+/.1.3.6.1.4.1.38337.1.1.3.7.4.${index}.0=${2}/g" $RADDLE_FILE
+	if [ $index -gt 0 ]; then
+	{
+		perl -pi -e "s/.1.3.6.1.4.1.38337.1.1.3.7.4.${index}.0=\w+/.1.3.6.1.4.1.38337.1.1.3.7.4.${index}.0=${2}/g" $RADDLE_FILE
+		echo $index", "$1", "$2
+	}
+	fi
 }
  
 while read oid val
