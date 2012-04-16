@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="12.04.12" time="15.29">
+<zabbix_export version="1.0" date="16.04.12" time="16.11">
   <hosts>
     <host name="Template_NTI_Enviromux_Mini">
       <proxy_hostid>0</proxy_hostid>
@@ -367,9 +367,9 @@
           <status>0</status>
           <data_type>0</data_type>
           <units>%</units>
-          <multiplier>0</multiplier>
+          <multiplier>1</multiplier>
           <delta>0</delta>
-          <formula>0</formula>
+          <formula>0.1</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
@@ -431,9 +431,9 @@
           <status>0</status>
           <data_type>0</data_type>
           <units>%</units>
-          <multiplier>0</multiplier>
+          <multiplier>1</multiplier>
           <delta>0</delta>
-          <formula>0</formula>
+          <formula>0.1</formula>
           <lastlogsize>0</lastlogsize>
           <logtimefmt></logtimefmt>
           <delay_flex></delay_flex>
