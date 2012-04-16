@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export version="1.0" date="11.04.12" time="03.38">
   <hosts>
-    <host name="Template_Eltek_Smartpack_v1">
+    <host name="Template_Eltek_Smartpack">
       <proxy_hostid>0</proxy_hostid>
       <useip>1</useip>
       <dns></dns>
