@@ -1,13 +1,15 @@
 #!/bin/sh
 # env-mux-mini.sh
-# v2.0
+# v2.1
 # Arif Kusbandono
 #
 # requires:
 # 1. awk, sed
 # 2. snmptranslate from NET-SNMP
 # 3. NIT Enviromux MIB installed in path (/usr/share/snmp/mibs)
-# 4. zabbix_event_ack.py which requires Python 2.6
+# 4. zabbix_event_ack.py
+# 5. and zabbix_event_ack_normal.py
+#    both requires Python 2.6
 #    (Please specify Python 2.6 bin)
 #
 # normal usage: ./env-mux-mini.sh
@@ -22,6 +24,10 @@
 # 3. The same Key of Zabbix trigger must be used, therefore `Ret` must
 #    removed from each key expression i.e. `waterSensor1RetTrap.0`
 #    becomes `waterSensor1Trap.0`
+#
+# 4. if the trigger for event is a clear alert (OK event), it will sleep
+#    for a while to then self acknowledge this event by the
+#    zabbix_event_ack_normal.py call
 
 unset checkStatus
 if [ "$1" == "check" ]; then
@@ -35,6 +41,7 @@ ZABBIX_SENDER="/home/zabbix/bin/zabbix_sender";
 PYTHON26="/usr/bin/python26"
 API_DIR="/home/zabbix/bin/api"
 ACK_API="$API_DIR/zabbix_event_ack.py";
+SELF_ACK_API="$API_DIR/zabbix_event_ack_normal.py";
 
 read hostname 
 vars=
@@ -97,6 +104,14 @@ if [ "$checkStatus" == "yes" ]; then
 	echo $key
 	echo $HOST
 	$ZABBIX_SENDER -vv -z $ZABBIX_SERVER -p $ZABBIX_PORT -s $HOST -k $key -o "$str"
+	if [ $incidentStatus -gt 0 ]; then
+		sleep 3
+		selfack_eventid=`$PYTHON26 $SELF_ACK_API $key $HOST.dic`
+	fi
 else
 	$ZABBIX_SENDER -z $ZABBIX_SERVER -p $ZABBIX_PORT -s $HOST -k $key -o "$str"
+	if [ $incidentStatus -gt 0 ]; then
+		sleep 3
+		selfack_eventid=`$PYTHON26 $SELF_ACK_API $key $HOST.dic`
+	fi
 fi
