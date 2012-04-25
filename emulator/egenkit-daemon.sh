@@ -15,7 +15,7 @@ do {
 	if [ $reachable_status -gt 0 ]; then
 		snmpd -C -I vacm_vars -c /home/zabbix/emulator/egenkit-emulator.conf
 		sleep 43
-		/etc/init.d/snmpd stop
+		/etc/init.d/snmpd stop > /dev/null 2>&1
 	else
 		/etc/init.d/snmpd stop
 	fi
