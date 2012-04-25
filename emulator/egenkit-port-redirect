@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/egenkit-port-redirect
+# egenkit-port-redirect	redirect IP & port
+#
+# Author: Arif Kusbandono
+#
+# chkconfig: 2345 16 83
+# description: egenkit-port-redirect
+
+# Source function library.
+. /etc/init.d/functions
+
+IPTABLES=/sbin/$IPTABLES
+
+start() {
+	$IPTABLES -t nat --flush
+	$IPTABLES -t nat -A OUTPUT --dst 10.254.134.11 -p udp --dport 3303 -j REDIRECT --to-port 3303
+	return 0
+}
+
+stop() {
+	$IPTABLES -t nat --flush
+	return 0
+}
+
+case $1 in
+
+start)
+	start
+	;;
+stop)
+	stop
+	;;
+*)
+	echo "Usage:  {start|stop}"
+    exit 1
+    ;;
+esac
+exit $?
