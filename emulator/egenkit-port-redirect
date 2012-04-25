@@ -11,7 +11,7 @@
 # Source function library.
 . /etc/init.d/functions
 
-IPTABLES=/sbin/$IPTABLES
+IPTABLES=/sbin/iptables
 
 start() {
 	$IPTABLES -t nat --flush

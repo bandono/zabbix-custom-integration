@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/egenkit-daemon-init
+# egenkit-daemon-init	To start egenkit-daemon.sh 
+#
+# Author: Arif Kusbandono
+#
+# chkconfig: 2345 98 40
+# description: egenkit-daemon-init to start egenkit-daemon.sh
+
+# Source function library.
+. /etc/init.d/functions
+
+EGENKITDAEMON=/home/zabbix/emulator/egenkit-daemon.sh
+pidFile=/var/run/egenkit.pid
+
+start() {
+	daemonStatus=`ps -ef | grep egenkit-daemon.sh | grep -v grep | wc -l`
+	if [ $daemonStatus -lt 1 ]; then
+		echo "Starting egenkit-daemon.sh"
+		$EGENKITDAEMON &
+		echo $! > $pidFile
+		return 0
+	else
+		return 1
+	fi
+}
+
+stop() {
+	daemonStatus=`ps -ef | grep egenkit-daemon.sh | grep -v grep | wc -l`
+	if [ $daemonStatus -gt 0 ]; then
+		echo "Killing egenkit-daemon.sh"
+		kill -9 `cat $pidFile`
+		# stop the snmpd started by the daemon
+		/etc/init.d/snmpd stop
+		return 0
+	else
+		return 1
+	fi
+}
+
+case $1 in
+
+start)
+	start
+	;;
+stop)
+	stop
+	;;
+*)
+	echo "Usage:  {start|stop}"
+    exit 1
+    ;;
+esac
+exit $?
