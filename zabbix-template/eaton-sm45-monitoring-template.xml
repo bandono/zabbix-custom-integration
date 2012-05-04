@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zabbix_export version="1.0" date="13.04.12" time="07.25">
+<zabbix_export version="1.0" date="04.05.12" time="14.04">
   <hosts>
     <host name="Template_Eaton_SM45">
       <proxy_hostid>0</proxy_hostid>
@@ -1084,7 +1084,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1116,7 +1116,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1148,7 +1148,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1180,7 +1180,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1212,7 +1212,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1244,7 +1244,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1276,7 +1276,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1308,7 +1308,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
@@ -1340,7 +1340,7 @@
           <trends>365</trends>
           <status>0</status>
           <data_type>0</data_type>
-          <units>Volt</units>
+          <units>Ampere</units>
           <multiplier>0</multiplier>
           <delta>0</delta>
           <formula>0</formula>
